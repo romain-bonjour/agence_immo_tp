@@ -8,10 +8,12 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
+@Data
+@Table(name = "property_type")
 public class PropertyType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String name;
 }
