@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <head th:replace="~{common.html :: #header}"> </head>
+        <title>Accueil</title>
+    </head>
+    <body>
+        <div th:replace="common.html :: #menu"></div>
+        <h1>Bienvenue à l'agence immobilière</h1>
+        <p>Page d'accueil par défaut.</p>
+        <a href="/properties">Voir les propriétés</a><br/>
+        <a href="/owners">Voir les propriétaires</a><br/>
+        <a href="/agents">Voir les agents</a><br/>
+        <div th:replace="common.html :: #js-script"></div>
+    </body>
+</html>
