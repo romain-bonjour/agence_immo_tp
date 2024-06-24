@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common.html :: #header}">
+<body>
+<div th:replace="common.html :: #menu"></div>
+<div class="container">
+	<div class="row">
+		<h2>Nouvel propriété</h2>
+	</div>
+
+	<div class="row">
+		<form th:action="@{/property/add}" th:object="${property}" method="post">
+				<label>Address: <input type="text" id="address" th:field="*{address}"/></label><br/>
+				<label>Type:
+					<select th:field="*{type}">
+						<option th:each="type : ${propertyTypes}" th:value="${type}" th:text="${type.name}"></option>
+					</select>
+				</label><br/>
+				<label>Owner:
+					<select th:field="*{owner}">
+						<option th:each="owner : ${owners}" th:value="${owner}" th:text="${owner.firstname + ' ' + owner.lastname}"></option>
+					</select>
+				</label><br/>
+				<label>Sale Date: <input type="date" th:field="*{saleDate}"/></label><br/>
+				<label>Sale Price: <input type="number" th:field="*{salePrice}"/></label><br/>
+				<button type="submit">Save</button>
+				<a class="btn btn-danger btn-sm" href="/property/list">Annuler</a>
+
+			</form>
+	</div>
+
+</div>
+</body>
+</html>

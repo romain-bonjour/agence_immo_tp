@@ -1,15 +1,20 @@
 package com.example.agenceimo.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
+@Data
+@Table(name = "Property")
 public class Property {
     @Id
-    private String propertyId;
+    @Column(name = "property_id")
+    private Long propertyId;
 
+    @Column(name = "address")
     private String address;
 
     @ManyToOne
@@ -20,6 +25,9 @@ public class Property {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
+    @Column(name = "sale_date")
     private LocalDate saleDate;
+
+    @Column(name = "sale_price")
     private BigDecimal salePrice;
 }

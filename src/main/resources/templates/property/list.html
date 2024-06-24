@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{common.html :: #header}"> </head>
+  <body>
+    <div th:replace="common.html :: #menu"></div>
+    <div class="container">
+      <div class="row"><h2>La liste des propriété</h2></div>
+      <div class="row col-md-8">
+          <p>
+            <a href="/property/add" class="btn btn-primary btn-sm">Nouveau propriété</a>
+          </p>
+        <table>
+          <thead>
+          <tr>
+            <th>Property ID</th>
+            <th>Address</th>
+            <th>Type</th>
+            <th>Owner</th>
+            <th>Sale Date</th>
+            <th>Sale Price</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="property : ${propertys}">
+            <td th:text="${property.propertyId}"></td>
+            <td th:text="${property.address}"></td>
+            <td th:text="${property.type.name}"></td>
+            <td th:text="${property.owner.firstname + ' ' + property.owner.lastname}"></td>
+            <td th:text="${property.saleDate}"></td>
+            <td th:text="${property.salePrice}"></td>
+            <td>
+              <a th:href="@{/property/edit/{id}(id=${property.propertyId})}">Edit</a>
+              <a th:href="@{/property/delete/{id}(id=${property.propertyId})}">Delete</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    <div th:replace="common.html :: #js-script"></div>
+  </body>
+</html>
